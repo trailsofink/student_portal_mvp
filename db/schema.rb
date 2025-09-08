@@ -10,7 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_04_201359) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_08_161321) do
+  create_table "answers", force: :cascade do |t|
+    t.integer "respond_id"
+    t.integer "question_id"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "name"
+    t.integer "qualtrics_id"
+    t.integer "salesforce_id"
+    t.string "heading"
+    t.integer "survey_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "responses", force: :cascade do |t|
+    t.integer "survey_id"
+    t.integer "uploader_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "ip_address"
@@ -18,6 +43,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_04_201359) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string "program"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
