@@ -8,3 +8,8 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Navbar */
+.bg-brand {
+  background-color: #122666;
+}
