@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_08_161321) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_10_202410) do
   create_table "answers", force: :cascade do |t|
     t.integer "respond_id"
     t.integer "question_id"
@@ -34,6 +34,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_08_161321) do
     t.integer "uploader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "unique_id"
   end
 
   create_table "sessions", force: :cascade do |t|
