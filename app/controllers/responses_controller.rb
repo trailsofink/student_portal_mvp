@@ -60,7 +60,7 @@ class ResponsesController < ApplicationController
   def import
     if params[:file].present?
       begin
-        ResponseImporter.import(params[:file]).process
+        ResponseImporter.new(file: params[:file]).process
         redirect_to responses_path, notice: "Responses imported successfully."
       rescue => e 
         # TODO: add in error handling
