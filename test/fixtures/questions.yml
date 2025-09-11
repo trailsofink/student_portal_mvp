@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  qualtrics_id: 1
+  salesforce_id: 1
+  heading: MyString
+  survey_id: 1
+
+two:
+  name: MyString
+  qualtrics_id: 1
+  salesforce_id: 1
+  heading: MyString
+  survey_id: 1

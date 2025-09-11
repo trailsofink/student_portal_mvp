@@ -1,0 +1,13 @@
+<h1>Hello WOrld!</h1>
+
+<% @surveys.each do |survey| %>
+  <%= survey.program %>
+<% end %>
+
+<h2>Import Survey Response .CSV files</h2>
+
+<%= form_with(url: import_responses_path, method: :post, multipart: true) do |form| %>
+  <%= form.file_field :file %>
+  <%= form.submit "Upload and Import" %>
+<% end %>
+
