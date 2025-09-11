@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   resources :answers
-  resources :responses
+  resources :responses do
+    collection do
+      get :import_form
+      post :import
+    end
+  end
   resources :questions
   resources :surveys
-  resource :session
+  resource  :session
   resources :passwords, param: :token
-  resources :registrations, only: %i[new create]
+  resources :registrations, only: %i[new create edit]
   resources :dashboard
+  get 'landing', to: 'landing#index', as: :landing
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -18,5 +24,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "dashboard#index"
+    root "dashboard#index"
 end

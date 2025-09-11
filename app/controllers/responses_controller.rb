@@ -57,6 +57,21 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def import
+    if params[:file].present?
+      begin
+        ResponseImporter.import(params[:file]).process
+        redirect_to responses_path, notice: "Responses imported successfully."
+      rescue => e 
+        # TODO: add in error handling
+        redirect_back fallback_location: root_url, alert: "Error importing file: #{e.message}"
+      end
+    else
+      redirect_back fallback_location: root_url, alert: "Please select a CSV file to import."
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_response

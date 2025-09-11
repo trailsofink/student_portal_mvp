@@ -15,6 +15,10 @@ class RegistrationsController < ApplicationController
     end
   end
 
+  def edit
+    # @user = Current.user
+  end
+
   private
 
   def user_params

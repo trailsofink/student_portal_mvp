@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-brand mb-4">
+  <div class="container">
+    <%= image_tag "https://instructure-uploads-pdx.s3.us-west-2.amazonaws.com/account_213100000000000001/attachments/2502/sidebar-new-102.svg", style: "width: auto; height: 40px"  %>
+    <%= link_to "Student Portal Salesforce Integration", root_path, class: "navbar-brand" %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if authenticated? %>
+          <li class="nav-item">
+            <%= link_to "Test", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Test", root_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <% if authenticated? %>
+            <%= link_to "Edit profile", edit_registration_path(Current.user), class: "nav-link" %>
+            <%= link_to "Sign out", session_path, data: { turbo_method: :delete }, class: "nav-link" %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_session_path, class: "nav-link" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Sign up", new_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
