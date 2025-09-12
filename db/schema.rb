@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_10_202410) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_12_150838) do
   create_table "answers", force: :cascade do |t|
-    t.integer "respond_id"
+    t.integer "response_id"
     t.integer "question_id"
     t.string "value"
     t.datetime "created_at", null: false
