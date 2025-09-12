@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_12_150838) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_12_203410) do
   create_table "answers", force: :cascade do |t|
     t.integer "response_id"
     t.integer "question_id"
@@ -21,8 +21,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_12_150838) do
 
   create_table "questions", force: :cascade do |t|
     t.string "name"
-    t.integer "qualtrics_id"
-    t.integer "salesforce_id"
+    t.string "qualtrics_id"
+    t.string "salesforce_id"
     t.string "heading"
     t.integer "survey_id"
     t.datetime "created_at", null: false
