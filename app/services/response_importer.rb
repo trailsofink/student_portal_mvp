@@ -71,7 +71,10 @@ class ResponseImporter
             question = survey.questions.find_by(name: header)
             unless question
               qualtrics_id = get_qid(header)
-              salesforce_id = get_sid(header)
+              salesforce_id = SalesforceQuestionMapping.salesforce_id_for(qualtrics_id)
+              unless salesforce_id
+                salesforce_id = SalesforceQuestionMapping.non_qid(header)
+              end
               question = survey.questions.create!(name: header, heading: question_info[header], qualtrics_id: qualtrics_id, salesforce_id: salesforce_id)
             end
 
