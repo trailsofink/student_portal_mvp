@@ -11,10 +11,10 @@
       <ul class="navbar-nav me-auto">
         <% if authenticated? %>
           <li class="nav-item">
-            <%= link_to "Test", root_path, class: "nav-link" %>
+            <%= link_to "Surveys", surveys_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Test", root_path, class: "nav-link" %>
+            <%= link_to "Responses", responses_path, class: "nav-link" %>
           </li>
         <% end %>
       </ul>

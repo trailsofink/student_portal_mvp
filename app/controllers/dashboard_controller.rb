@@ -3,9 +3,6 @@ class DashboardController < ApplicationController
   before_action :redirect_if_unauthenticated
 
   def index
-    new_survey = Survey.new
-    new_survey.program = "PROG-0143"
-    new_survey.save
     @surveys = Survey.all
   end
 

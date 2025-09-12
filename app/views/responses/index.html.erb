@@ -5,12 +5,17 @@
 <h1>Responses</h1>
 
 <div id="responses">
-  <% @responses.each do |response| %>
-    <%= render response %>
-    <p>
-      <%= link_to "Show this response", response %>
-    </p>
-  <% end %>
+  <div class="card">
+    <ul class="list-group list-group-flush">
+      <% @responses.each do |response| %>
+        <li class="list-group-item"><%= render response %>
+          <p>
+            <%= link_to "Show this response", response %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
 <%= link_to "New response", new_response_path %>

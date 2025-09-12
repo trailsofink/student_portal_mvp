@@ -1,6 +1,17 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @response %>
+<div class="card">
+  <ul class="list-group list-group-flush">
+    <% @response.answers.each do |answer| %>
+      <li class="list-group-item">
+        <strong><%= answer.question.heading %>:</strong>
+        <%= answer.value %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 
 <div>
   <%= link_to "Edit this response", edit_response_path(@response) %> |
