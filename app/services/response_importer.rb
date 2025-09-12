@@ -10,8 +10,9 @@ class ResponseImporter
   end
 
   def get_qid(string)
-    match_data = string.match(/^QID\d+/)
-    match_data
+    return unless string
+    match_data = string.match(/^QID\d+_\d+|^QID\d+/)
+    match_data.to_s if match_data
   end
 
   def process
@@ -28,7 +29,7 @@ class ResponseImporter
     headers = csv.shift
     questions_headings = csv.shift
     data_rows = csv
-    qualtrics_question_id = headers
+    qualtrics_question_ids = headers
 
     record_id_index = headers.index('_recordId')
     unless record_id_index
@@ -69,7 +70,9 @@ class ResponseImporter
           row_data.each do |header, value|
             question = survey.questions.find_by(name: header)
             unless question
-              question = survey.questions.create!(name: header, heading: question_info[header])
+              qualtrics_id = get_qid(header)
+              salesforce_id = get_sid(header)
+              question = survey.questions.create!(name: header, heading: question_info[header], qualtrics_id: qualtrics_id, salesforce_id: salesforce_id)
             end
 
             if question
