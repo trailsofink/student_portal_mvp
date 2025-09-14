@@ -1,5 +1,8 @@
 class RegistrationsController < ApplicationController
-  allow_unauthenticated_access
+  skip_before_action :require_authentication, only: %i[new create]
+  before_action :require_authentication, only: %i[edit update]
+
+  before_action :set_user, only: %i[edit update]
 
   def new
     @user = User.new
@@ -16,10 +19,21 @@ class RegistrationsController < ApplicationController
   end
 
   def edit
-    # @user = Current.user
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to root_path, notice: 'Successfully updated!'
+    else
+      render :edit
+    end
   end
 
   private
+
+  def set_user
+    @user = Current.user
+  end
 
   def user_params
     params.require(:user).permit(:email_address, :password, :password_confirmation)

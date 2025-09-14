@@ -1,21 +1,15 @@
-<p style="color: green"><%= notice %></p>
-
+<h3 class="card-title mb-3">Response</h3>
 <%= render @response %>
+
 <div class="card">
-  <ul class="list-group list-group-flush">
-    <% @response.answers.each do |answer| %>
-      <li class="list-group-item">
-        <strong><%= answer.question.heading %>:</strong>
-        <%= answer.value %>
-      </li>
+  <div class="card-body">
+    <% i = 1 %>
+    <% @answers.each do |answer| %>
+      <div class="question-answer-wrapper my-4 mx-3">
+        <h5 class="card-title" id="heading<%= answer.question.name %>"><%= i %>. <%= answer.question.heading %></h5>
+        <p class="card-text mb-3"><%= answer.value %></p>
+      </div>
+      <% i += 1  %>
     <% end %>
-  </ul>
-</div>
-
-
-<div>
-  <%= link_to "Edit this response", edit_response_path(@response) %> |
-  <%= link_to "Back to responses", responses_path %>
-
-  <%= button_to "Destroy this response", @response, method: :delete %>
+  </div>
 </div>

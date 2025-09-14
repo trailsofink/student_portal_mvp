@@ -1,21 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Responses" %>
 
 <h1>Responses</h1>
 
 <div id="responses">
-  <div class="card">
+  <div class="card mt-3">
     <ul class="list-group list-group-flush">
       <% @responses.each do |response| %>
         <li class="list-group-item"><%= render response %>
           <p>
-            <%= link_to "Show this response", response %>
+            <%= link_to "Show this response", response, class: "btn btn-outline-brand" %>
           </p>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
-
-<%= link_to "New response", new_response_path %>

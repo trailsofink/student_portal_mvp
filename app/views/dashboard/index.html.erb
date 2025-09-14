@@ -1,13 +1,19 @@
-<h1>Hello WOrld!</h1>
-
-<% @surveys.each do |survey| %>
-  <%= survey.program %>
-<% end %>
-
-<h2>Import Survey Response .CSV files</h2>
-
-<%= form_with(url: import_responses_path, method: :post, multipart: true) do |form| %>
-  <%= form.file_field :file %>
-  <%= form.submit "Upload and Import" %>
-<% end %>
+<h1 class="text-center">Welcome Back, Admin!</h1>
+<br>
+<p class=text-center>Import a Qualtrics .csv file to import survey data.</p>
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title text-center m-3">Import Survey Response .CSV files</h3>
+  </div>
+  <div class="card-body">
+    <%= form_with(url: import_responses_path, method: :post, multipart: true) do |form| %>
+      <%= form.file_field :file, class: "form-control mb-3" %>
+      <div class="d-flex justify-content-center align-items-center">
+        <%= form.submit "Upload and Import", class: "btn btn-primary btn-brand" %>
+        <span class="mx-3"> or </span>
+        <%= link_to "Export Responses", export_responses_path, class: "btn btn-primary bg-brand" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 

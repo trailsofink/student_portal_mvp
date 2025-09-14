@@ -10,6 +10,33 @@
  */
 
 /* Navbar */
-.bg-brand {
+.bg-brand, .btn-primary {
+  @extend .btn-primary;
   background-color: #122666;
+  border: 1px solid #122666;
+  transition: background-color 0.3s ease;
+}
+
+a.bg-brand:hover {
+  background-color: #0c1b4d !important;
+  border: 1px solid #0c1b4d !important;
+}
+
+.btn-brand:hover {
+  @extend .btn-primary;
+  background-color: #0c1b4d;
+  border: 1px solid #0c1b4d;
+}
+
+.btn-outline-brand {
+  extends .btn-outline-primary;
+  color: #122666;
+  border: 1px solid #122666;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-brand:hover {
+  @extend .btn-outline-primary;
+  background-color: #122666;
+  color: #fff;
 }
