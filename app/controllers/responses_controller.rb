@@ -8,6 +8,7 @@ class ResponsesController < ApplicationController
 
   # GET /responses/1 or /responses/1.json
   def show
+    @answers = @response.answers.includes(:question)
   end
 
   # GET /responses/new
@@ -62,7 +63,7 @@ class ResponsesController < ApplicationController
       begin
         ResponseImporter.new(file: params[:file]).process
         redirect_to responses_path, notice: "Responses imported successfully."
-      rescue => e 
+      rescue => e
         # TODO: add in error handling
         redirect_back fallback_location: root_url, alert: "Error importing file: #{e.message}"
       end
@@ -71,14 +72,21 @@ class ResponsesController < ApplicationController
     end
   end
 
+  def export
+    begin
+      csv_data = SalesforceExporter.export_responses
+      send_data csv_data, filename: "survey_responses_#{Time.now.strftime("%Y%m%d%H%S")}.csv", type: "text/csv", disposition: "attachment"
+    rescue => e 
+      redirect_back fallback_location: root_url, alert: "Error exporting survey responses: #{e.message}"
+    end
+  end
+
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_response
       @response = Response.find(params.expect(:id))
     end
 
-    # Only allow a list of trusted parameters through.
     def response_params
       params.expect(response: [ :survey_id, :uploader_id ])
     end

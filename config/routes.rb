@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  resources :answers
-  resources :responses do
+  resources :surveys, only: %i[index show]
+  resources :responses, only: %i[index show] do
     collection do
       get :import_form
       post :import
+      get :export
     end
   end
-  resources :questions
-  resources :surveys
   resource  :session
   resources :passwords, param: :token
   resources :registrations, only: %i[new create edit]
   resources :dashboard
+  resources :registrations, only: %i[new create edit update]
   get 'landing', to: 'landing#index', as: :landing
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
