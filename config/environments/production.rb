@@ -14,7 +14,8 @@ Rails.application.configure do
 
   # The secret key base is used to sign cookies and other sensitive data.
   # This value is set in the Render environment variables.
-  config.secret_key_base = ENV["SECRET_KEY_BASE"]
+  # A dummy value is used during asset precompilation in the Dockerfile.
+  config.secret_key_base = ENV.fetch("SECRET_KEY_BASE", ENV.fetch("SECRET_KEY_BASE_DUMMY", nil))
 
   # Turn on fragment caching in view templates.
   config.action_controller.perform_caching = true
