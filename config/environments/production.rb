@@ -12,10 +12,9 @@ Rails.application.configure do
   # Full error reports are disabled.
   config.consider_all_requests_local = false
 
-  # The secret key base is used to sign cookies and other sensitive data.
-  # This value is set in the Render environment variables.
-  # A dummy value is used during asset precompilation in the Dockerfile.
-  config.secret_key_base = ENV.fetch("SECRET_KEY_BASE", ENV.fetch("SECRET_KEY_BASE_DUMMY", nil))
+  # The secret_key_base is either read from the credentials file or from the
+  # SECRET_KEY_BASE environment variable.
+  # config.secret_key_base = ENV.fetch("SECRET_KEY_BASE")
 
   # Turn on fragment caching in view templates.
   config.action_controller.perform_caching = true
