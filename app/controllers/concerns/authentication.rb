@@ -1,4 +1,5 @@
 module Authentication
+  # NOTE: This is Awesome, you chose to go with Rails 8 authentication and authorization.
   extend ActiveSupport::Concern
 
   included do

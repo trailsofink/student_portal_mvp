@@ -3,6 +3,8 @@
 require 'csv'
 
 class ResponseImporter
+  # NOTE: We would love to see comments so that the reviewer understand what's going on
+  # Overall, great work on reading the csv
   attr_reader :file
 
   def initialize(file:)

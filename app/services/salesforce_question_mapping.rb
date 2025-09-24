@@ -1,6 +1,7 @@
 # app/services/salesforce_question_mapping.rb
 
 module SalesforceQuestionMapping
+  # NOTE: This seems like tedious work! Great job sorting through necessary columns in the data.
   def self.salesforce_id_for(qualtrics_id)
     case qualtrics_id
     when "QID1" then "FirstName__c"
