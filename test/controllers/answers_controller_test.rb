@@ -1,6 +1,7 @@
 require "test_helper"
 
 class AnswersControllerTest < ActionDispatch::IntegrationTest
+  # NOTE: great job attempting to test your features
   setup do
     @answer = answers(:one)
   end

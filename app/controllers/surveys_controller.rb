@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: %i[ show edit update destroy ]
-
+  # NOTE: Awesome skinny and clean Controllers! That's what we like to see! 
   # GET /surveys or /surveys.json
   def index
     @surveys = Survey.all
